@@ -1,0 +1,42 @@
+Developed by Jayesh Patel
+
+
+Port Knocking is a way by which you can defend yourself against port scanners., it refuses access to a protected port until a client accesses a  sequence of other ports in the right order upfront.
+
+
+testuser@master:~/portKnocking$ python knock.py -h
+usage: knock.py [-h]
+                Target IP Target Service Port Knock Ports File Name protocol
+                name
+
+Pass Argument
+
+positional arguments:
+  Target IP             Enter Target IP
+  Target Service Port   Enter Targe Service Port
+  Knock Ports File Name Enter knock ports File Name
+  protocol name         Enter protocol name (TCP/UDP)
+
+optional arguments:
+  -h, --help            show this help message and exit
+
+
+Example :
+
+# python knock.py 10.203.136.113 22 knockPort.cfg TCP
+
+output :
+========
+Testing Port Sequence 111,222,333 : FAIL
+Port Knock Successfully Completed with 7000,8000,9000, Now You can access 22 port in this machine
+Note : To delete knock port run command : nc -nv 10.203.136.113 9000 8000 7000
+
+
+You can update the list of port combination in this file. 
+
+# testuser@master:~/portKnocking$ cat knockPort.cfg
+111,222,333
+7000,8000,9000
+1000,2000,3000
+
+
